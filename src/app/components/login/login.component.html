@@ -4,19 +4,35 @@
     <img src="assets/img/login.svg" alt="" />
     <mat-form-field class="full-width">
       <mat-label>Email</mat-label>
-      <input matInput placeholder="Ex. seu@email.com" />
+      <input
+        [formControl]="email"
+        required="Digite um email."
+        [(ngModel)]="creds.email"
+        name="email"
+        matInput
+        placeholder="Ex. seu@email.com"
+      />
     </mat-form-field>
 
     <mat-form-field class="full-width">
       <mat-label>Senha</mat-label>
-      <input type="password" matInput placeholder="Ex. 123" />
+      <input
+        type="password"
+        [formControl]="senha"
+        required="Digite sua senha."
+        [(ngModel)]="creds.senha"
+        name="senha"
+        matInput
+        placeholder="Ex. 123"
+      />
     </mat-form-field>
     <button
+      [disabled]="!validaCampos()"
       class="full-width mat-elevation-z4"
       mat-stroked-button
       color="primary"
     >
-      Primary
+      Login
     </button>
   </form>
 </div>
