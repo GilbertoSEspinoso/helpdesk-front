@@ -6,3 +6,15 @@
 table {
   width: 100%;
 }
+mat-form-field{
+  width: 100%;
+}
+.button-tecnico{
+  display: flex;
+  align-items: center;
+  
+}
+h1{
+  width: 100%;
+  text-align: center;
+}
