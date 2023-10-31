@@ -12,7 +12,7 @@ const routes: Routes = [
   {
     path: "",
     component: NavComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
     children: [
       { path: "home", component: HomeComponent },
       { path: "tecnicos", component: TecnicoListComponent },
