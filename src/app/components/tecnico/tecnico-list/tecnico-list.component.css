@@ -13,3 +13,9 @@ h1{
   width: 100%;
   text-align: center;
 }
+.edit{
+  color: rgb(15, 88, 172, 0.871);
+}
+.delete{
+  color: rgb(169, 30, 30);
+}
