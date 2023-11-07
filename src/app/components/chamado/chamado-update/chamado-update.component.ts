@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Chamado } from 'src/app/models/chamado';
 import { Cliente } from 'src/app/models/cliente';
@@ -42,18 +42,29 @@ export class ChamadoUpdateComponent implements OnInit {
     private clienteService: ClienteService,
     private tecnicoService: TecnicoService,
     private toastService:    ToastrService,
-    private route: Router,
+    private activatedRoute: ActivatedRoute,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
+    this.chamado.id = this.activatedRoute.snapshot.paramMap.get('id');
+    this.findById();
     this.findAllClientes();
     this.findAllTecnicos();
   }
 
-  create(): void {
-    this.chamadoService.create(this.chamado).subscribe(resposta => {
-      this.toastService.success('Chamado Criado Com Sucesso', 'Novo chamado');
-      this.route.navigate(['chamados']);
+  findById(): void {
+    this.chamadoService.findById(this.chamado.id).subscribe(resposta => {
+      this.chamado = resposta;
+    }, ex => {
+      this.toastService.error(ex.error.error);
+    })
+  }
+
+  update(): void {
+    this.chamadoService.update(this.chamado).subscribe(resposta => {
+      this.toastService.success('Chamado Atualizado Com Sucesso', 'Atualizar chamado');
+      this.router.navigate(['chamados']);
     }, ex => {
       this.toastService.error(ex.error.error);
     })
@@ -77,6 +88,26 @@ export class ChamadoUpdateComponent implements OnInit {
                this.observacoes.valid &&
                this.tecnico.valid     &&
                this.cliente.valid 
+  }
+
+  retornaStatus(status: any): string {
+    if(status == '0') {
+      return 'ABERTO';
+    } else if(status == '1'){
+      return 'EM ANDAMENTO';
+    }else {
+      return 'ENCERRADO'
+    }
+  }
+
+  retornaPrioridade(prioridade: any): string {
+    if(prioridade == '0') {
+      return 'BAIXA';
+    } else if(prioridade == '1'){
+      return 'MÉDIA';
+    }else {
+      return 'ALTA'
+    }
   }
 
 }

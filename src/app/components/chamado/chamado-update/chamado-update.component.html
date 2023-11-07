@@ -1,6 +1,6 @@
 <div class="container mat-elevation-z8" >
   <h1 class="full-width">PAINEL DE ATUALIZAÇÃO DE CHAMADO</h1>
-  <img class="full-width" src="assets/img/update-chamado.svg" alt="criando chamado">
+  <img class="full-width" src="assets/img/chamado-update.svg" alt="criando chamado">
 
   <form class="form">
     <mat-form-field class="full-width" appearance="outline">
@@ -18,7 +18,7 @@
 
   <div class="status-prioridade">
     <mat-form-field  appearance="outline">
-      <mat-label>Status</mat-label>
+      <mat-label>{{retornaStatus(chamado.status)}}</mat-label>
       <mat-select 
         [(ngModel)]="chamado.status"
         name="status"
@@ -31,7 +31,7 @@
     </mat-form-field>
 
     <mat-form-field  appearance="outline">
-      <mat-label>Prioridade</mat-label>
+      <mat-label>{{retornaPrioridade(chamado.prioridade)}}</mat-label>
       <mat-select 
         [(ngModel)]="chamado.prioridade"
         name="prioridade"
@@ -46,7 +46,7 @@
 
   <div class="tecnico">
     <mat-form-field class="full-width" appearance="outline">
-      <mat-label>Técnico</mat-label>
+      <mat-label>{{chamado.nomeTecnico}}</mat-label>
       <mat-select 
         [(ngModel)]="chamado.tecnico"
         name="tecnico"
@@ -59,11 +59,12 @@
 
   <div class="cliente">
     <mat-form-field class="full-width" appearance="outline">
-      <mat-label>Cliente</mat-label>
+      <mat-label>{{chamado.nomeCliente}}</mat-label>
       <mat-select 
         [(ngModel)]="chamado.cliente"
         name="cliente"
-        [formControl]="cliente" required>
+        [formControl]="cliente" 
+        required>
         <mat-option *ngFor="let cli of clientes" value="{{cli.id}}">{{cli.nome}}</mat-option>
       </mat-select>
     </mat-form-field>
@@ -84,6 +85,6 @@
     </mat-form-field>
   </form>
 
-  <button (click)="create()" [disabled]="!validaCampos()" mat-raised-button color="primary" class="full-width">Atualizar</button>
+  <button mat-raised-button (click)="update()" [disabled]="!validaCampos()" class="full-width color-g2 color-w1">Atualizar</button>
   <button routerLink="../" mat-stroked-button color="warn" class="full-width">Cancelar</button>
 </div>

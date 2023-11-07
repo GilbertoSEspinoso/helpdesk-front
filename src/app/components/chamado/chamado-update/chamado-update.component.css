@@ -20,11 +20,19 @@ img{
 .status-prioridade mat-form-field{
   width: 49%;
 }
-.descricao{
+.observacoes{
   min-height: 6rem;
   max-height: 10rem ;
 }
 button{
   margin-top: .5rem;
+  font-size: 1.2rem;
 }
+.color-g2{
+  background-color: #92E3A9;
+}
+.color-w1{
+  color: #fff;
+}
+
 
