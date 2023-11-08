@@ -63,7 +63,7 @@ export class ChamadoUpdateComponent implements OnInit {
 
   update(): void {
     this.chamadoService.update(this.chamado).subscribe(resposta => {
-      this.toastService.success('Chamado Atualizado Com Sucesso', 'Atualizar chamado');
+      this.toastService.success('Chamado Atualizado Com Sucesso', 'Atualizar chamado', {timeOut: 7000});
       this.router.navigate(['chamados']);
     }, ex => {
       this.toastService.error(ex.error.error);

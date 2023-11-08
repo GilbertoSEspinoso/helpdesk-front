@@ -32,3 +32,6 @@ img {
 button {
   margin-top: 0.625rem;
 }
+mat-icon{
+  opacity: .6;
+}

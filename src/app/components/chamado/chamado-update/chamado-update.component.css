@@ -28,6 +28,9 @@ button{
   margin-top: .5rem;
   font-size: 1.2rem;
 }
+button:hover{
+  opacity: .7;
+}
 .color-g2{
   background-color: #92E3A9;
 }

@@ -2,7 +2,7 @@
   height: 100%;
 }
 .sidenav {
-  width: 13rem;
+  width: 18rem;
   color: white;
   background: linear-gradient(
     180deg,
@@ -17,10 +17,14 @@ img {
   margin: 0.8rem auto 1rem auto;
 }
 .sidenav a {
-  color: white;
+  color: #fff;
+  font-size: 1.250rem;
+  font-weight: 500;
 }
 .sidenav i {
   margin: 0.6rem;
+  font-size: 2.250rem;
+  margin-right: 3rem;
 }
 .menu {
   margin: 1rem 0 0 1rem;
